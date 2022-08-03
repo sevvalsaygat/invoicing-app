@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom"
 
-function Index() {
+function Index({ invoices, setInvoices }) {
   return (
     <div>
       <Link to="/">Yeni fatura oluştur</Link>

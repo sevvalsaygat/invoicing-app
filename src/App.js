@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import "react-datepicker/dist/react-datepicker.css";
 
 function App() {
   return (

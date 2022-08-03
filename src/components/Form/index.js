@@ -45,6 +45,18 @@ function Index({ invoices, setInvoices }) {
           {errors.receiver_email && <span className='text-red-500'>This field is required!</span>}
         </div>
         <div className='mt-5'>
+          <label className="text-gray-700 dark:text-gray-200" >Payment Type</label>
+          <select
+            className="block px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+            {...register("payment_type", { required: true })}>
+            <option value="">Please select payment type</option>
+            <option value="credit_card">Credit Card</option>
+            <option value="check">Check</option>
+            <option value="cash">Cash</option>
+          </select>
+          {errors.payment_type && <span className='text-red-500'>This field is required!</span>}
+        </div>
+        <div className='mt-5'>
           <label className="text-gray-700 dark:text-gray-200" >Payment Date</label>
           <input
             className="block px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"

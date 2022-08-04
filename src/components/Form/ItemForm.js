@@ -2,10 +2,12 @@ import React from 'react'
 import { useForm } from "react-hook-form";
 
 function ItemForm() {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const onSubmit = (data) => {
     console.log(data)
+    reset()
   };
+
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -40,7 +42,7 @@ function ItemForm() {
           {errors.price && <span className='text-red-500'>This field is required!</span>}
         </div>
         <button
-          className="mt-5 px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+          className="mt-5 mb-10 px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
           type='submit'>
           ADD
         </button>

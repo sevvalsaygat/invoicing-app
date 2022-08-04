@@ -2,10 +2,18 @@ import React from 'react'
 import { Link } from "react-router-dom"
 import { useForm } from "react-hook-form";
 
-function Index({ invoices, setInvoices }) {
+function Index({ invoices, setInvoices, invoiceForm, setInvoiceForm }) {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const onSubmit = (data) => {
-    console.log(data)
+    setInvoiceForm({
+      ...invoiceForm,
+      title: data.title,
+      description: data.description,
+      receiver_email: data.receiver_email,
+      payment_date: data.payment_date,
+      payment_due_date: data.payment_due_date
+    })
+    setInvoices([...invoices, invoiceForm])
     reset()
   };
 

@@ -1,10 +1,10 @@
 import React from 'react'
 import { useForm } from "react-hook-form";
 
-function ItemForm() {
+function ItemForm({invoiceForm, setInvoiceForm}) {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const onSubmit = (data) => {
-    console.log(data)
+    setInvoiceForm({...invoiceForm, items: [...invoiceForm.items, data]})
     reset()
   };
 

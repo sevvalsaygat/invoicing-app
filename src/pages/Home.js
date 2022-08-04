@@ -1,6 +1,6 @@
 import React from 'react'
-import ItemForm from '../components/Form/ItemForm'
 import Form from '../components/Form/index'
+import ItemForm from '../components/Form/ItemForm'
 
 function Home() {
   return (

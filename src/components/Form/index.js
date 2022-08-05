@@ -1,19 +1,27 @@
 import React from 'react'
 import { Link } from "react-router-dom"
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 
-function Index({ invoices, setInvoices, invoiceForm, setInvoiceForm }) {
-  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+const defaultItemValue = {
+  service: '',
+  quantity: '0',
+  price: '0'
+}
+
+function Index({ invoices, setInvoices }) {
+  const { register, handleSubmit, control, reset, formState: { errors } } = useForm({
+    defaultValues: {
+      items: [defaultItemValue]
+    }
+  });
+
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "items",
+  });
+
   const onSubmit = (data) => {
-    setInvoiceForm({
-      ...invoiceForm,
-      title: data.title,
-      description: data.description,
-      receiver_email: data.receiver_email,
-      payment_date: data.payment_date,
-      payment_due_date: data.payment_due_date
-    })
-    setInvoices([...invoices, invoiceForm])
+    setInvoices([...invoices, data])
     reset()
   };
 
@@ -88,10 +96,71 @@ function Index({ invoices, setInvoices, invoiceForm, setInvoiceForm }) {
           />
           {errors.payment_due_date && <span className='text-red-500'>This field is required!</span>}
         </div>
+        <table>
+          <tbody>
+            <tr>
+              <th>Service</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Total Price</th>
+              <th></th>
+            </tr>
+            {
+              fields.map((field, i) => (
+                <tr key={i}>
+                  <td>
+                    <input
+                      placeholder='Service'
+                      {...register(`items[${i}].service`, { required: true })}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      placeholder='Quantity'
+                      {...register(`items[${i}].quantity`, {
+                        required: true,
+                        valueAsNumber: true,
+                        validate: (value) => value > 0,
+                      })}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      placeholder='Price'
+                      {...register(`items[${i}].price`, {
+                        required: true,
+                        valueAsNumber: true,
+                        pattern: {
+                          value: /^(0|[1-9]\d*)(\.\d+)?$/
+                        },
+                      })}
+                    />
+
+                    {errors.items?.[i].price && <span className='text-red-500'>This field is required!</span>}
+                  </td>
+                  <td>
+                    {
+                      field.quantity && field.price && field.quantity * field.price
+                    }
+                  </td>
+                  <td>
+                    <button onClick={() => {
+                      remove(i)
+                    }}>Delete</button>
+                  </td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+        <button onClick={() => {
+          append(defaultItemValue)
+        }}>Add New Item</button>
+
         <button
           className="mt-5 px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
           type='submit'>
-          Creat
+          Create
         </button>
       </form>
       <br />

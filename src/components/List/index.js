@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom"
 
-function Index({ invoices, setInvoices }) {
+function Index({ invoices }) {
   return (
     <div>
       <div className="flex border-b">

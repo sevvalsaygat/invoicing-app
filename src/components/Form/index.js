@@ -135,8 +135,6 @@ function Index({ invoices, setInvoices }) {
                         },
                       })}
                     />
-
-                    {errors.items?.[i].price && <span className='text-red-500'>This field is required!</span>}
                   </td>
                   <td>
                     {

@@ -13,6 +13,8 @@ function Index({ invoices }) {
     );
   });
 
+  const[selectText, setSelectText] = useState("")
+
   return (
     <div>
       <div className="flex border-b">
@@ -25,27 +27,33 @@ function Index({ invoices }) {
       <div>
 
         <input
-          className='mt-5'
-          placeholder='Filter Contact'
+          className='mt-5 mr-10'
+          placeholder='Filter invoices'
           value={filterText}
           onChange={(e) => setFilterText(e.target.value)}
         />
 
-        <ul className='list mt-5'>
+        <select onChange={(e) => setSelectText(e.target.value)}>
+          <option value="">Payment Type</option>
+          <option value="">Ödenmiş Faturalar</option>
+          <option value="">Ödenmemiş Faturalar</option>
+        </select>
+
+        <ul className='list'>
           {
             filtered.map((invoice, i) => (
               <li key={i}>
+                <span>{invoice.items.service}</span>
+                <span>{invoice.items.quantity}</span>
                 <span>{invoice.title}</span>
                 <span>{invoice.description}</span>
                 <span>{invoice.receiver_email}</span>
-                <span>{invoice.payment_type}</span>
+                <span>{invoice.credit_card}</span>
                 <span>{invoice.payment_date}</span>
-                <span>{invoice.payment_due_date}</span>
               </li>
             ))}
         </ul>
-
-        <p className='mt-5'>Total invoice({filtered.length})</p>
+        <p>Total invoice({filtered.length})</p>
       </div>
     </div>
   )

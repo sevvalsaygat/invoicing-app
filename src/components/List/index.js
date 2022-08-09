@@ -12,6 +12,19 @@ function Index({ invoices }) {
     setFilteredInvoices(filteredData)
   }
 
+  const filterBySelect = (e) => {
+    const selectedFilterType = e.target.value;
+
+    if (selectedFilterType === 'default') {
+      setFilteredInvoices(invoices)
+    } else if (selectedFilterType === 'paid_invocies') {
+      const filteredData = invoices.filter(invoice => invoice.payment_date != null && invoice.payment_date != "");
+      setFilteredInvoices(filteredData)
+    } else if (selectedFilterType === 'unpaid_invoices') {
+      const filteredData = invoices.filter(invoice => invoice.payment_date == null || invoice.payment_date == "");
+      setFilteredInvoices(filteredData)
+    }
+  }
   return (
     <div>
       <div className="flex border-b">
@@ -24,10 +37,16 @@ function Index({ invoices }) {
       <div>
 
         <input
-          className='mt-5 mr-10'
+          className='mt-5 mb-5 mr-10'
           placeholder='Filter invoices'
           onChange={filterByInput}
         />
+
+        <select onChange={filterBySelect}>
+          <option value="default">Filtreleri Kaldır</option>
+          <option value="paid_invocies">Ödenmiş Faturalar</option>
+          <option value="unpaid_invoices">Ödenmemiş Faturalar</option>
+        </select>
 
         {
           filteredInvoices.length > 0 &&
@@ -47,7 +66,7 @@ function Index({ invoices }) {
           </ul>
         }
         {
-          filteredInvoices.length === 0 && <div>Herhangi bir veri bulunamadı.</div>
+          filteredInvoices.length === 0 && <div className='mb-5'>Herhangi bir veri bulunamadı.</div>
         }
         <p>Total invoice({filteredInvoices.length})</p>
       </div>

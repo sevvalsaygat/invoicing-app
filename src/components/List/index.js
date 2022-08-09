@@ -18,10 +18,10 @@ function Index({ invoices }) {
     if (selectedFilterType === 'default') {
       setFilteredInvoices(invoices)
     } else if (selectedFilterType === 'paid_invocies') {
-      const filteredData = invoices.filter(invoice => invoice.payment_date != null && invoice.payment_date != "");
+      const filteredData = invoices.filter(invoice => invoice.payment_date !== null && invoice.payment_date !== "");
       setFilteredInvoices(filteredData)
     } else if (selectedFilterType === 'unpaid_invoices') {
-      const filteredData = invoices.filter(invoice => invoice.payment_date == null || invoice.payment_date == "");
+      const filteredData = invoices.filter(invoice => invoice.payment_date === null || invoice.payment_date === "");
       setFilteredInvoices(filteredData)
     }
   }
@@ -48,27 +48,26 @@ function Index({ invoices }) {
           <option value="unpaid_invoices">Ödenmemiş Faturalar</option>
         </select>
 
-        {
-          filteredInvoices.length > 0 &&
-          <ul className='list'>
+        <table className='w-full border mt-10 text-center'>
+          <tbody>
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Payment Date</th>
+              <th>Detaylar</th>
+            </tr>
             {
               filteredInvoices.map((invoice, i) => (
-                <li key={i}>
-                  <span>{invoice.items.service}</span>
-                  <span>{invoice.items.quantity}</span>
-                  <span>{invoice.title}</span>
-                  <span>{invoice.description}</span>
-                  <span>{invoice.receiver_email}</span>
-                  <span>{invoice.credit_card}</span>
-                  <span>{invoice.payment_date}</span>
-                </li>
-              ))}
-          </ul>
-        }
-        {
-          filteredInvoices.length === 0 && <div className='mb-5'>Herhangi bir veri bulunamadı.</div>
-        }
-        <p>Total invoice({filteredInvoices.length})</p>
+                <tr key={i}>
+                  <td>{invoice.title}</td>
+                  <td>{invoice.description}</td>
+                  <td>{invoice.payment_date}</td>
+                  <td><button>Detaylar</button></td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
       </div>
     </div>
   )

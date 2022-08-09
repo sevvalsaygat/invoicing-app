@@ -2,18 +2,15 @@ import React, { useState } from 'react'
 import { Link } from "react-router-dom"
 
 function Index({ invoices }) {
-  const [filterText, setFilterText] = useState("")
+  const [filteredInvoices, setFilteredInvoices] = useState(invoices)
 
-  const filtered = invoices.filter((item) => {
-    return Object.keys(item).some((key) =>
-      item[key]
-        .toString()
-        .toLowerCase()
-        .includes(filterText.toLocaleLowerCase())
-    );
-  });
+  const filterByInput = (e) => {
+    const searchedWords = e.target.value
 
-  const[selectText, setSelectText] = useState("")
+    const filteredData = invoices.filter(invoice => invoice.title.toLowerCase().includes(searchedWords.toLocaleLowerCase()) || invoice.description.toLowerCase().includes(searchedWords.toLocaleLowerCase()))
+
+    setFilteredInvoices(filteredData)
+  }
 
   return (
     <div>
@@ -29,31 +26,30 @@ function Index({ invoices }) {
         <input
           className='mt-5 mr-10'
           placeholder='Filter invoices'
-          value={filterText}
-          onChange={(e) => setFilterText(e.target.value)}
+          onChange={filterByInput}
         />
 
-        <select onChange={(e) => setSelectText(e.target.value)}>
-          <option value="">Payment Type</option>
-          <option value="">Ödenmiş Faturalar</option>
-          <option value="">Ödenmemiş Faturalar</option>
-        </select>
-
-        <ul className='list'>
-          {
-            filtered.map((invoice, i) => (
-              <li key={i}>
-                <span>{invoice.items.service}</span>
-                <span>{invoice.items.quantity}</span>
-                <span>{invoice.title}</span>
-                <span>{invoice.description}</span>
-                <span>{invoice.receiver_email}</span>
-                <span>{invoice.credit_card}</span>
-                <span>{invoice.payment_date}</span>
-              </li>
-            ))}
-        </ul>
-        <p>Total invoice({filtered.length})</p>
+        {
+          filteredInvoices.length > 0 &&
+          <ul className='list'>
+            {
+              filteredInvoices.map((invoice, i) => (
+                <li key={i}>
+                  <span>{invoice.items.service}</span>
+                  <span>{invoice.items.quantity}</span>
+                  <span>{invoice.title}</span>
+                  <span>{invoice.description}</span>
+                  <span>{invoice.receiver_email}</span>
+                  <span>{invoice.credit_card}</span>
+                  <span>{invoice.payment_date}</span>
+                </li>
+              ))}
+          </ul>
+        }
+        {
+          filteredInvoices.length === 0 && <div>Herhangi bir veri bulunamadı.</div>
+        }
+        <p>Total invoice({filteredInvoices.length})</p>
       </div>
     </div>
   )

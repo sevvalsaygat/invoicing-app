@@ -35,7 +35,7 @@ function Index({ invoices, setInvoices }) {
         </ul>
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className='mt-10'>
+        <div className='mt-5'>
           <label className="text-gray-700 dark:text-gray-200" >Title</label>
           <input
             className="block px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
@@ -53,6 +53,16 @@ function Index({ invoices, setInvoices }) {
             placeholder='Description'
             {...register("description")}
           />
+        </div>
+        <div className='mt-10'>
+          <label className="text-gray-700 dark:text-gray-200" >Recipient Name</label>
+          <input
+            className="block px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+            type="text"
+            placeholder='Recipient Name'
+            {...register("recipent", { required: true })}
+          />
+          {errors.title && <span className='text-red-500'>This field is required!</span>}
         </div>
         <div className='mt-5'>
           <label className="text-gray-700 dark:text-gray-200" >Receiver e-mail</label>
@@ -82,6 +92,7 @@ function Index({ invoices, setInvoices }) {
             className="block px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
             type="date"
             placeholder='Payment Date'
+            {...register("payment_date", { required: false })}
           />
         </div>
         <div className='mt-5'>

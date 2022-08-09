@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom"
+import Modal from 'react-modal'
 
 function Index({ invoices }) {
   const [filteredInvoices, setFilteredInvoices] = useState(invoices)
+  const [modal, setModal] = useState({ isOpened: false, invoice: null })
+
 
   const filterByInput = (e) => {
     const searchedWords = e.target.value
@@ -25,6 +28,25 @@ function Index({ invoices }) {
       setFilteredInvoices(filteredData)
     }
   }
+
+  function afterOpenModal() {
+  }
+
+  function closeModal() {
+    setModal({ isOpened: false, invoice: null });
+  }
+
+  const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+    },
+  };
+
   return (
     <div>
       <div className="flex border-b">
@@ -62,13 +84,45 @@ function Index({ invoices }) {
                   <td>{invoice.title}</td>
                   <td>{invoice.description}</td>
                   <td>{invoice.payment_date}</td>
-                  <td><button>Detaylar</button></td>
+                  <td><button onClick={() => {
+                    setModal({ isOpened: true, invoice: invoice })
+                  }}>Detaylar</button></td>
                 </tr>
               ))
             }
           </tbody>
         </table>
       </div>
+      <Modal 
+      isOpen={modal.isOpened} 
+      style={customStyles} 
+      onAfterOpen={afterOpenModal} 
+      ariaHideApp={false} 
+      onRequestClose={closeModal}
+      >
+        {modal.invoice && (
+          <table className='w-full border mt-10 text-center'>
+            <tbody>
+              <tr>
+                <th>Service</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+              </tr>
+              {
+                modal.invoice.items.map((item, i) => (
+                  <tr key={i}>
+                    <td>{item.service}</td>
+                    <td>{item.quantity}</td>
+                    <td>{item.price}</td>
+                    <td>{item.price * item.quantity}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        )}
+      </Modal>
     </div>
   )
 }

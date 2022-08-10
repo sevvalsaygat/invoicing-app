@@ -52,23 +52,23 @@ function Index({ invoices }) {
     console.log(invoice)
     emailjs.send('gmail', 'template_invoices', invoice, 'M9wIkM3tvly1rDeUX')
       .then((result) => {
-          console.log(result.text);
+        console.log(result.text);
       }, (error) => {
-          console.log(error.text);
+        console.log(error.text);
       });
   }
- 
+
   return (
-    <div>
-      <div className="flex border-b">
-        <ul className='-mb-px mr-1'>
-          <li className='bg-white inline-block border-l border-t border-r rounded-t py-2 px-4 text-pink-700 font-semibold' href="#">
-            <Link to="/">Yeni fatura oluştur</Link>
-          </li>
-        </ul>
+    <div className='bg-neutral-50'>
+        <div className='max-w-7xl mx-auto px-4 sm:px-6'>
+          <div className='text-lg flex justify-between items-center border-b-2 border-gray-300 py-6 md:justify-start md:space-x-10 text-neutral-500 font-Times New Roman'>
+            <ul href="#">
+              <Link className='ml-10' to="/">Yeni fatura oluştur</Link>
+            </ul>
+        </div>
       </div>
       <div>
-      
+
         <input
           className='mt-5 mb-5 mr-10'
           placeholder='Filter invoices'
@@ -99,7 +99,7 @@ function Index({ invoices }) {
                   <td><button onClick={() => {
                     setModal({ isOpened: true, invoice: invoice })
                   }}>Detaylar</button></td>
-                  <td><button onClick={()=> {onClickEmailButton(invoice)}}>Send Email</button></td>
+                  <td><button onClick={() => { onClickEmailButton(invoice) }}>Send Email</button></td>
                 </tr>
               ))
             }

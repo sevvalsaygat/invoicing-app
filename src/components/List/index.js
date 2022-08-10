@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Link } from "react-router-dom"
 import Modal from 'react-modal'
 import emailjs from 'emailjs-com'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Index({ invoices }) {
   const [filteredInvoices, setFilteredInvoices] = useState(invoices)
@@ -50,6 +52,15 @@ function Index({ invoices }) {
 
   const onClickEmailButton = (invoice) => {
     console.log(invoice)
+    toast.success('Email sent successfully!', {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
     emailjs.send('gmail', 'template_invoices', invoice, 'M9wIkM3tvly1rDeUX')
       .then((result) => {
         console.log(result.text);
@@ -60,11 +71,11 @@ function Index({ invoices }) {
 
   return (
     <div className='bg-neutral-50'>
-        <div className='max-w-7xl mx-auto px-4 sm:px-6'>
-          <div className='text-lg flex justify-between items-center border-b-2 border-gray-300 py-6 md:justify-start md:space-x-10 text-neutral-500 font-Times New Roman'>
-            <ul href="#">
-              <Link className='ml-10' to="/">Yeni fatura oluştur</Link>
-            </ul>
+      <div className='max-w-7xl mx-auto px-4 sm:px-6'>
+        <div className='text-lg flex justify-between items-center border-b-2 border-gray-300 py-6 md:justify-start md:space-x-10 text-neutral-500 font-Times New Roman'>
+          <ul href="#">
+            <Link className='ml-10' to="/">Yeni fatura oluştur</Link>
+          </ul>
         </div>
       </div>
       <div>
@@ -99,7 +110,8 @@ function Index({ invoices }) {
                   <td><button onClick={() => {
                     setModal({ isOpened: true, invoice: invoice })
                   }}>Detaylar</button></td>
-                  <td><button onClick={() => { onClickEmailButton(invoice) }}>Send Email</button></td>
+                  <td><button position="top-right"
+                    onClick={() => { onClickEmailButton(invoice) }}>Send Email</button></td>
                 </tr>
               ))
             }
@@ -136,6 +148,15 @@ function Index({ invoices }) {
           </table>
         )}
       </Modal>
+      <ToastContainer
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover />
     </div>
   )
 }

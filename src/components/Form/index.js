@@ -26,155 +26,173 @@ function Index({ invoices, setInvoices }) {
   };
 
   return (
-    // <div style={{width:600, height:600, backgroundColor:"pink", justifyContent:'center', display:'flex', alignItems:'center'}}>
-    //   <div style={{width:400, height:400, backgroundColor:"red" }}>
-    //   <input
-    //         className=" block px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-    //         type="text"
-    //         placeholder='Invoice Title'
-    //         {...register("title", { required: true })}
-    //       />
-    //       <input
-    //         className=" block px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-    //         type="text"
-    //         placeholder='Invoice Title'
-    //         {...register("title", { required: true })}
-    //       />
-    //   </div>  
-    // </div>
+    <section onSubmit={handleSubmit(onSubmit)} className="mt-10 max-w-6xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
+      <ul className='max-w-7xl mx-auto sm:px-6 text-lg border-b-2 border-gray-300 py-6 md:justify-start md:space-x-10 text-neutral-500 font-Times New Roman' href="#">
+        <span className='ml-10 mr-10 text-3xl font-style: italic text-gray-900'>INVOICE.</span>
+        <Link className='ml-10' to="/list">Fatura Listele</Link>
+      </ul>
+      <h2 className="text-lg font-semibold text-gray-700 capitalize dark:text-white">...</h2>
+      <form>
+        <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+          <div>
+            <label className="text-gray-700 dark:text-gray-200">Invoice Title</label>
+            <input
+              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+              type="text"
+              placeholder='Invoice Title'
+              {...register("title", { required: true })}
+            />
+            {errors.title && <span className='text-red-500'>This field is required!</span>}
+          </div>
+          <div>
+            <label className="text-gray-700 dark:text-gray-200">Description</label>
+            <textarea
+              rows={5}
+              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+              placeholder='Description'
+              {...register("description")}
+            />
+          </div>
+          <div>
+            <label className="text-gray-700 dark:text-gray-200">Recipient Name</label>
+            <input
+              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+              type="text"
+              placeholder='Recipient Name'
+              {...register("recipent", { required: true })}
+            />
+            {errors.title && <span className='text-red-500'>This field is required!</span>}
+          </div>
+          <div>
+            <label className="text-gray-700 dark:text-gray-200">Receiver e-mail</label>
+            <input
+              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+              type="email"
+              placeholder='Receiver e-mail'
+              {...register("receiver_email", { required: true })}
+            />
+            {errors.receiver_email && <span className='text-red-500'>This field is required!</span>}
+          </div>
+          <div>
+            <label className="text-gray-700 dark:text-gray-200">Payment Type</label>
+            <select
+              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+              {...register("payment_type", { required: true })}>
+              <option value="">Please select payment type</option>
+              <option value="credit_card">Credit Card</option>
+              <option value="check">Check</option>
+              <option value="cash">Cash</option>
+            </select>
+            {errors.payment_type && <span className='text-red-500'>This field is required!</span>}
+          </div>
+          <div>
+            <label className="text-gray-700 dark:text-gray-200">Payment Date</label>
+            <input
+              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+              type="date"
+              placeholder='Payment Date'
+              {...register("payment_date", { required: false })} />
+          </div>
+          <div>
+            <label className="text-gray-700 dark:text-gray-200">Payment Due Date</label>
+            <input
+              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+              type="date"
+              placeholder='Payment Due Date'
+              {...register("payment_due_date", { required: true })}
+            />
+            {errors.payment_due_date && <span className='text-red-500'>This field is required!</span>}
+          </div>
 
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className='bg-neutral-50'>
-        <ul className='max-w-7xl mx-auto sm:px-6 text-lg border-b-2 border-gray-300 py-6 md:justify-start md:space-x-10 text-neutral-500 font-Times New Roman' href="#">
-          <span className='ml-10 mr-10 text-3xl font-style: italic text-gray-900'>INVOICE.</span>
-          <Link className='ml-10' to="/list">Fatura Listele</Link>
-        </ul>
-          <label>Title</label>
-          <input
-            className="text-gray-700 dark:text-gray-200 block px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-            type="text"
-            placeholder='Invoice Title'
-            {...register("title", { required: true })}
-          />
-          {errors.title && <span className='text-red-500'>This field is required!</span>}
-          <label>Description</label>
-          <textarea
-            rows={5}
-            className="text-gray-700 dark:text-gray-200 block px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-            placeholder='Description'
-            {...register("description")}
-          />
-          <label>Recipient Name</label>
-          <input
-            className="text-gray-700 dark:text-gray-200 block px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-            type="text"
-            placeholder='Recipient Name'
-            {...register("recipent", { required: true })}
-          />
-          {errors.title && <span className='text-red-500'>This field is required!</span>}
-          <label>Receiver e-mail</label>
-          <input
-            className="text-gray-700 dark:text-gray-200 block px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-            type="email"
-            placeholder='Receiver e-mail'
-            {...register("receiver_email", { required: true })}
-          />
-          {errors.receiver_email && <span className='text-red-500'>This field is required!</span>}
-          <label>Payment Type</label>
-          <select
-            className="text-gray-700 dark:text-gray-200 block px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-            {...register("payment_type", { required: true })}>
-            <option value="">Please select payment type</option>
-            <option value="credit_card">Credit Card</option>
-            <option value="check">Check</option>
-            <option value="cash">Cash</option>
-          </select>
-          {errors.payment_type && <span className='text-red-500'>This field is required!</span>}
-          <label>Payment Date</label>
-          <input
-            className="text-gray-700 dark:text-gray-200 block px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-            type="date"
-            placeholder='Payment Date'
-            {...register("payment_date", { required: false })}
-          />
-          <label>Payment Due Date</label>
-          <input
-            className="text-gray-700 dark:text-gray-200 block px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-            type="date"
-            placeholder='Payment Due Date'
-            {...register("payment_due_date", { required: true })}
-          />
-          {errors.payment_due_date && <span className='text-red-500'>This field is required!</span>}
-          <table>
-            <tbody>
-              <tr>
-                <th>Service</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Total Price</th>
-                <th></th>
-              </tr>
-              {
-                fields.map((field, i) => (
-                  <tr key={i}>
-                    <td>
-                      <input className='mt-5 py-1 px-4'
-                        placeholder='Service'
-                        {...register(`items[${i}].service`, { required: true })}
-                      />
-                    </td>
-                    <td>
-                      <input className='mt-5 py-1 px-4'
-                        placeholder='Quantity'
-                        {...register(`items[${i}].quantity`, {
-                          required: true,
-                          valueAsNumber: true,
-                          validate: (value) => value > 0,
-                        })}
-                      />
-                    </td>
-                    <td>
-                      <input className='mt-5 py-1 px-4'
-                        placeholder='Price'
-                        {...register(`items[${i}].price`, {
-                          required: true,
-                          valueAsNumber: true,
-                          pattern: {
-                            value: /^(0|[1-9]\d*)(\.\d+)?$/
-                          },
-                        })}
-                      />
-                    </td>
-                    <td>
-                      {
-                        field.quantity && field.price && field.quantity * field.price
-                      }
-                    </td>
-                    <td>
-                      <button className="ml-10 bg-transparent hover:bg-blue-100 text-blue-800 font-Times New Roman hover:text-white py-1 px-3 border border-blue-500 hover:border-transparent rounded"
-                        type='submit'
-                        onClick={() => {
-                          remove(i)
-                        }}>Delete</button>
-                    </td>
-                  </tr>
-                ))
-              }
-            </tbody>
-          </table>
-          <button className="mr-10 mt-10 bg-transparent hover:bg-blue-100 text-blue-800 font-Times New Roman hover:text-white py-1 px-4 border border-blue-500 hover:border-transparent rounded"
-            type='submit'
-            onClick={() => {
-              append(defaultItemValue)
-            }}>Add New Item</button>
-
-          <button
-            className="bg-transparent hover:bg-blue-100 text-blue-800 font-Times New Roman hover:text-white py-1 px-4 border border-blue-500 hover:border-transparent rounded"
-            type='submit'>
-            Create
-          </button>
         </div>
-    </form>
+        <div className="flex flex-col">
+          <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+              <div className="overflow-hidden">
+                <table className="min-w-full">
+                  <thead className="border-b">
+                    <tr>
+                      <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                        Service
+                      </th>
+                      <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                        Quantity
+                      </th>
+                      <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                        Price
+                      </th>
+                      <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                        Total Price
+                      </th>
+                      <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {
+                      fields.map((field, i) => (
+                        <tr key={i} className="border-b">
+                          <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>
+                            <input className='mt-5 py-1 px-4 w-30'
+                              placeholder='Service'
+                              {...register(`items[${i}].service`, { required: true })}
+                            />
+                          </td>
+                          <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>
+                            <input className='mt-5 py-1 px-4 w-16'
+                              placeholder='Quantity'
+                              {...register(`items[${i}].quantity`, {
+                                required: true,
+                                valueAsNumber: true,
+                                validate: (value) => value > 0,
+                              })}
+                            />
+                          </td>
+                          <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>
+                            <input className='mt-5 py-1 px-4 w-16'
+                              placeholder='Price'
+                              {...register(`items[${i}].price`, {
+                                required: true,
+                                valueAsNumber: true,
+                                pattern: {
+                                  value: /^(0|[1-9]\d*)(\.\d+)?$/
+                                },
+                              })}
+                            />
+                          </td>
+                          <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>
+                            <p className='mt-5 py-1 px-4'>{
+                              field.quantity && field.price && field.quantity * field.price
+                            }</p>
+                          </td>
+                          <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>
+                            <button className="ml-10 bg-transparent hover:bg-blue-100 text-blue-800 font-Times New Roman hover:text-white py-1 px-3 border border-blue-500 hover:border-transparent rounded"
+                              type='submit'
+                              onClick={() => {
+                                remove(i)
+                              }}>Delete</button>
+                          </td>
+                        </tr>
+                      ))
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button className="mr-10 mt-10 px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+          type='submit'
+          onClick={() => {
+            append(defaultItemValue)
+          }}>Add New Item</button>
+        <button
+          className="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+          type='submit'>
+          Create
+        </button>
+      </form>
+    </section>
   )
 }
 

@@ -70,7 +70,7 @@ function Index({ invoices }) {
   }
 
   return (
-    <div className='bg-neutral-50'>
+    <div>
       <div className='max-w-7xl mx-auto px-4 sm:px-6'>
         <div className='text-lg flex justify-between items-center border-b-2 border-gray-300 py-6 md:justify-start md:space-x-10 text-neutral-500 font-Times New Roman'>
           <ul href="#">

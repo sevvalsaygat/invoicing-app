@@ -115,6 +115,8 @@ function Index({ invoices }) {
               <th scope="col" className="py-3 px-6 font-sans">
               {t("list.table.details")}
               </th>
+              <th scope="col" className="py-3 px-6">
+              </th>
             </tr>
           </thead>
           <tbody>

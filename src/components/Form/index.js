@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from "react-router-dom"
 import { useForm, useFieldArray } from "react-hook-form";
 import { useTranslation } from 'react-i18next';
+import LanguageSelect from './../LanguageSelect/index'
 
 const defaultItemValue = {
   service: '',
@@ -35,6 +36,7 @@ function Index({ invoices, setInvoices }) {
       <ul className='max-w-7xl mx-auto sm:px-6 text-lg border-b-2 border-gray-300 py-6 md:justify-start md:space-x-10 text-neutral-500 font-Times New Roman' href="#">
         <span className='ml-10 mr-10 text-3xl font-style: italic text-gray-900 font-sans'>INVOICE.</span>
         <Link className='ml-10 font-sans' to="/list">{t("form.buttons.list_invoices")}</Link>
+        <LanguageSelect/>
       </ul>
       <h2 className="text-lg font-semibold text-gray-700 capitalize dark:text-white">...</h2>
       <form>

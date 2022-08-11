@@ -72,5 +72,11 @@
         "on_error": "Bir şeyler ters gitti!"
       }
     }
+  },
+  "language_select": {
+    "options": {
+      "tr": "Türkçe",
+      "en": "İngilizce"
+    }
   }
 }

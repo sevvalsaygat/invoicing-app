@@ -72,5 +72,11 @@
         "on_error": "Someting goes wrong!"
       }
     }
+  },
+  "language_select": {
+    "options": {
+      "tr": "Turkish",
+      "en": "English"
+    }
   }
 }

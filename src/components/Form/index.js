@@ -9,7 +9,7 @@ const defaultItemValue = {
 }
 
 function Index({ invoices, setInvoices }) {
-  const { register, handleSubmit, control, reset, formState: { errors } } = useForm({
+  const { register, watch, handleSubmit, control, reset, formState: { errors } } = useForm({
     defaultValues: {
       items: [defaultItemValue]
     }
@@ -24,6 +24,9 @@ function Index({ invoices, setInvoices }) {
     setInvoices([...invoices, data])
     reset()
   };
+
+  const watchPaymentDate = watch("payment_date");
+  const watchPaymentDueDate = watch("payment_due_date");
 
   return (
     <section onSubmit={handleSubmit(onSubmit)} className="mt-10 max-w-6xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
@@ -73,24 +76,31 @@ function Index({ invoices, setInvoices }) {
             />
             {errors.receiver_email && <span className='text-red-500'>This field is required!</span>}
           </div>
-          <div>
-            <label className="text-gray-700 dark:text-gray-200">Payment Date</label>
-            <input
-              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring font-sans"
-              type="date"
-              placeholder='Payment Date'
-              {...register("payment_date", { required: false })} />
-          </div>
-          <div>
-            <label className="text-gray-700 dark:text-gray-200">Payment Due Date</label>
-            <input
-              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring font-sans"
-              type="date"
-              placeholder='Payment Due Date'
-              {...register("payment_due_date", { required: true })}
-            />
-            {errors.payment_due_date && <span className='text-red-500'>This field is required!</span>}
-          </div>
+          {
+            !watchPaymentDueDate && (
+              <div>
+                <label className="text-gray-700 dark:text-gray-200">Payment Date</label>
+                <input
+                  className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring font-sans"
+                  type="date"
+                  placeholder='Payment Date'
+                  {...register("payment_date", { required: false })} />
+              </div>
+            )
+          }
+          {
+            !watchPaymentDate && (
+              <div>
+                <label className="text-gray-700 dark:text-gray-200">Payment Due Date</label>
+                <input
+                  className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring font-sans"
+                  type="date"
+                  placeholder='Payment Due Date'
+                  {...register("payment_due_date", { required: false })}
+                />
+              </div>
+            )
+          }
           <div>
             <label className="text-gray-700 dark:text-gray-200">Payment Type</label>
             <select

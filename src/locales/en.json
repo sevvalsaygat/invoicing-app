@@ -1,0 +1,76 @@
+{
+  "form": {
+    "buttons": {
+      "list_invoices": "List Invoices",
+      "delete": "Delete",
+      "add_new_item": "Add New Item",
+      "create": "Create"
+    },
+    "fields": {
+      "title": "Invoice Title",
+      "description": "Description",
+      "recipent_name": "Recipent Name",
+      "reciver_email": "Reciver e-mail",
+      "payment_date": "Payment Date",
+      "payment_due_date": "Payment Due Date",
+      "payment_type": {
+        "label": "Payment Type",
+        "options": {
+          "cash": "Cash",
+          "credit_card": "Credit Card",
+          "check": "Check",
+          "default": "Please select a payment type"
+        }
+      },
+      "items": {
+        "service": "Service",
+        "quantity": "Quantity",
+        "price": "Price",
+        "total_price": "Total Price"
+      }
+    },
+    "errors": {
+      "required": "This field is required!"
+    }
+  },
+  "list": {
+    "buttons": {
+      "details": "Details",
+      "send_email": "Send E-mail",
+      "create_new_invoice": "Create New Invoice"
+    },
+    "title": "Fast and easy invoicing",
+    "description": "online invoice generator makes your life easier when it comes to billing and collecting money.",
+    "filters": {
+      "input": "Filter Invoices",
+      "select": {
+        "options": {
+          "default": "Filter by payment statuses",
+          "paid_invoices": "Paid Invoices",
+          "unpaid_invoices": "Unpaid Invoices"
+        }
+      }
+    },
+    "table": {
+      "title": "Title",
+      "recipent_name": "Recipent Name",
+      "payment_date": "Payment Date",
+      "details": "Details"
+    },
+    "modal": {
+      "table": {
+        "description": "Description",
+        "service": "Service",
+        "quantity": "Quantity",
+        "price": "Price",
+        "total": "Total"
+      }
+    },
+    "toasts": {
+      "email": {
+        "on_succes": "Email sent successfully!",
+        "on_error": "Someting goes wrong!"
+      }
+    }
+  }
+}

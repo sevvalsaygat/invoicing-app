@@ -1,0 +1,76 @@
+{
+  "form": {
+    "buttons": {
+      "list_invoices": "Faturaları Listele",
+      "delete": "Sil",
+      "add_new_item": "Yeni Veri Ekle",
+      "create": "Oluştur"
+    },
+    "fields": {
+      "title": "Fatura Başlığı",
+      "description": "Açıklama",
+      "recipent_name": "Alıcı Adı",
+      "reciver_email": "Alıcı e-posta",
+      "payment_date": "Ödeme Tarihi",
+      "payment_due_date": "Son Ödeme Tarihi",
+      "payment_type": {
+        "label": "Ödeme Tipi",
+        "options": {
+          "cash": "Nakit",
+          "credit_card": "Kredi Kartı",
+          "check": "Çek",
+          "default": "Lütfen ödeme tipi seçin"
+        }
+      },
+      "items": {
+        "service": "Hizmet",
+        "quantity": "Miktar",
+        "price": "Fiyat",
+        "total_price": "Toplam Fiyat"
+      }
+    },
+    "errors": {
+      "required": "Bu alan boş bırakılamaz!"
+    }
+  },
+  "list": {
+    "buttons": {
+      "details": "Detaylar",
+      "send_email": "E-posta gönder",
+      "create_new_invoice": "Yeni Fatura Oluştur"
+    },
+    "title": "Hızlı ve kolay faturalama",
+    "description": "çevrimiçi fatura oluşturucu, faturalandırma ve para toplama konusunda hayatınızı kolaylaştırır.",
+    "filters": {
+      "input": "Faturaları Filtrele",
+      "select": {
+        "options": {
+          "default": "Ödeme durumlarına göre filtreleyin",
+          "paid_invoices": "Ödenmiş Faturalar",
+          "unpaid_invoices": "Ödenmemiş Faturalar"
+        }
+      }
+    },
+    "table": {
+      "title": "Başlık",
+      "recipent_name": "Alıcı Adı",
+      "payment_date": "Ödeme Tarihi",
+      "details": "Detaylar"
+    },
+    "modal": {
+      "table": {
+        "description": "Açıklama",
+        "service": "Hizmet",
+        "quantity": "Miktar",
+        "price": "Fiyat",
+        "total": "Toplam"
+      }
+    },
+    "toasts": {
+      "email": {
+        "on_succes": "E-posta başarıyla gönderildi!",
+        "on_error": "Bir şeyler ters gitti!"
+      }
+    }
+  }
+}

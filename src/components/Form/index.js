@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom"
 import { useForm, useFieldArray } from "react-hook-form";
+import { useTranslation } from 'react-i18next';
 
 const defaultItemValue = {
   service: '',
@@ -9,6 +10,7 @@ const defaultItemValue = {
 }
 
 function Index({ invoices, setInvoices }) {
+  const { t } = useTranslation()
   const { register, watch, handleSubmit, control, reset, formState: { errors } } = useForm({
     defaultValues: {
       items: [defaultItemValue]
@@ -32,58 +34,57 @@ function Index({ invoices, setInvoices }) {
     <section onSubmit={handleSubmit(onSubmit)} className="mt-10 max-w-6xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
       <ul className='max-w-7xl mx-auto sm:px-6 text-lg border-b-2 border-gray-300 py-6 md:justify-start md:space-x-10 text-neutral-500 font-Times New Roman' href="#">
         <span className='ml-10 mr-10 text-3xl font-style: italic text-gray-900 font-sans'>INVOICE.</span>
-        <Link className='ml-10 font-sans' to="/list">List Invoice</Link>
+        <Link className='ml-10 font-sans' to="/list">{t("form.buttons.list_invoices")}</Link>
       </ul>
       <h2 className="text-lg font-semibold text-gray-700 capitalize dark:text-white">...</h2>
       <form>
         <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
           <div>
-            <label className="text-gray-700 dark:text-gray-200">Invoice Title</label>
+            <label className="text-gray-700 dark:text-gray-200">{t("form.fields.title")}</label>
             <input
               className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring font-sans"
               type="text"
-              placeholder='Invoice Title'
+              placeholder={t("form.fields.title")}
               {...register("title", { required: true })}
             />
-            {errors.title && <span className='text-red-500'>This field is required!</span>}
+            {errors.title && <span className='text-red-500'>{t("form.errors.required")}</span>}
           </div>
           <div>
-            <label className="text-gray-700 dark:text-gray-200">Description</label>
+            <label className="text-gray-700 dark:text-gray-200">{t("form.fields.description")}</label>
             <textarea
               rows={5}
               className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring font-sans"
-              placeholder='Description'
+              placeholder={t("form.fields.description")}
               {...register("description")}
             />
           </div>
           <div>
-            <label className="text-gray-700 dark:text-gray-200">Recipient Name</label>
+            <label className="text-gray-700 dark:text-gray-200">{t("form.fields.recipent_name")}</label>
             <input
               className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring font-sans"
               type="text"
-              placeholder='Recipient Name'
+              placeholder={t("form.fields.recipent_name")}
               {...register("recipent", { required: true })}
             />
-            {errors.title && <span className='text-red-500'>This field is required!</span>}
+            {errors.title && <span className='text-red-500'>{t("form.errors.required")}</span>}
           </div>
           <div>
-            <label className="text-gray-700 dark:text-gray-200">Receiver e-mail</label>
+            <label className="text-gray-700 dark:text-gray-200">{t("form.fields.reciver_email")}</label>
             <input
               className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring font-sans"
               type="email"
-              placeholder='Receiver e-mail'
+              placeholder={t("form.fields.reciver_email")}
               {...register("receiver_email", { required: true })}
             />
-            {errors.receiver_email && <span className='text-red-500'>This field is required!</span>}
+            {errors.receiver_email && <span className='text-red-500'>{t("form.errors.required")}</span>}
           </div>
           {
             !watchPaymentDueDate && (
               <div>
-                <label className="text-gray-700 dark:text-gray-200">Payment Date</label>
+                <label className="text-gray-700 dark:text-gray-200">{t("form.fields.payment_date")}</label>
                 <input
                   className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring font-sans"
                   type="date"
-                  placeholder='Payment Date'
                   {...register("payment_date", { required: false })} />
               </div>
             )
@@ -91,27 +92,26 @@ function Index({ invoices, setInvoices }) {
           {
             !watchPaymentDate && (
               <div>
-                <label className="text-gray-700 dark:text-gray-200">Payment Due Date</label>
+                <label className="text-gray-700 dark:text-gray-200">{t("form.fields.payment_due_date")}</label>
                 <input
                   className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring font-sans"
                   type="date"
-                  placeholder='Payment Due Date'
                   {...register("payment_due_date", { required: false })}
                 />
               </div>
             )
           }
           <div>
-            <label className="text-gray-700 dark:text-gray-200">Payment Type</label>
+            <label className="text-gray-700 dark:text-gray-200">{t("form.fields.payment_type.label")}</label>
             <select
               className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring font-sans"
               {...register("payment_type", { required: true })}>
-              <option value="">Please select payment type</option>
-              <option value="credit_card">Credit Card</option>
-              <option value="check">Check</option>
-              <option value="cash">Cash</option>
+              <option value="">{t("form.fields.payment_type.options.default")}</option>
+              <option value="credit_card">{t("form.fields.payment_type.options.credit_card")}</option>
+              <option value="check">{t("form.fields.payment_type.options.check")}</option>
+              <option value="cash">{t("form.fields.payment_type.options.cash")}</option>
             </select>
-            {errors.payment_type && <span className='text-red-500'>This field is required!</span>}
+            {errors.payment_type && <span className='text-red-500'>{t("form.errors.required")}</span>}
           </div>
         </div>
         <div className="flex flex-col">
@@ -122,16 +122,16 @@ function Index({ invoices, setInvoices }) {
                   <thead className="border-b">
                     <tr>
                       <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left font-sans">
-                        Service
+                        {t("form.fields.items.service")}
                       </th>
                       <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left font-sans">
-                        Quantity
+                        {t("form.fields.items.quantity")}
                       </th>
                       <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left font-sans">
-                        Price
+                        {t("form.fields.items.price")}
                       </th>
                       <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left font-sans">
-                        Total Price
+                        {t("form.fields.items.total_price")}
                       </th>
                       <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left font-sans">
                       </th>
@@ -143,13 +143,13 @@ function Index({ invoices, setInvoices }) {
                         <tr key={i} className="border-b">
                           <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap font-sans'>
                             <input className='mt-5 py-1 px-4 w-30 bg-white border border-gray-300 rounded-md'
-                              placeholder='Service'
+                              placeholder={t("form.fields.items.service")}
                               {...register(`items[${i}].service`, { required: true })}
                             />
                           </td>
                           <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap font-sans'>
                             <input className='mt-5 py-1 px-4 w-16 border border-gray-300 rounded-md'
-                              placeholder='Quantity'
+                              placeholder= {t("form.fields.items.quantity")}
                               {...register(`items[${i}].quantity`, {
                                 required: true,
                                 valueAsNumber: true,
@@ -159,7 +159,7 @@ function Index({ invoices, setInvoices }) {
                           </td>
                           <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap font-sans'>
                             <input className='mt-5 py-1 px-4 w-16 border border-gray-300 rounded-md'
-                              placeholder='Price'
+                              placeholder= {t("form.fields.items.price")}
                               {...register(`items[${i}].price`, {
                                 required: true,
                                 valueAsNumber: true,
@@ -179,7 +179,7 @@ function Index({ invoices, setInvoices }) {
                               type='submit'
                               onClick={() => {
                                 remove(i)
-                              }}>Delete</button>
+                              }}>{t("form.buttons.delete")}</button>
                           </td>
                         </tr>
                       ))
@@ -194,11 +194,11 @@ function Index({ invoices, setInvoices }) {
           type='submit'
           onClick={() => {
             append(defaultItemValue)
-          }}>Add New Item</button>
+          }}>{t("form.buttons.add_new_item")}</button>
         <button
           className="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600 font-sans"
           type='submit'>
-          Create
+          {t("form.buttons.create")}
         </button>
       </form>
     </section>

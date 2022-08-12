@@ -133,9 +133,6 @@ function Index({ invoices, setInvoices }) {
                         {t("form.fields.items.price")}
                       </th>
                       <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left font-sans">
-                        {t("form.fields.items.total_price")}
-                      </th>
-                      <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left font-sans">
                       </th>
                     </tr>
                   </thead>
@@ -170,11 +167,6 @@ function Index({ invoices, setInvoices }) {
                                 },
                               })}
                             />
-                          </td>
-                          <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap font-sans'>
-                            <p className='mt-5 py-1 px-4 w-16 border border-gray-300 rounded-md'>{
-                              field.quantity && field.price && field.quantity * field.price
-                            }</p>
                           </td>
                           <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap font-sans'>
                             <button className="mt-5 bg-transparent hover:bg-blue-100 text-blue-800 font-Times New Roman hover:text-white py-1 px-3 border border-blue-500 hover:border-transparent rounded"

@@ -162,6 +162,7 @@ function Index({ invoices, setInvoices }) {
                               {...register(`items[${i}].price`, {
                                 required: true,
                                 valueAsNumber: true,
+                                validate: (value) => value > 0,
                                 pattern: {
                                   value: /^(0|[1-9]\d*)(\.\d+)?$/
                                 },

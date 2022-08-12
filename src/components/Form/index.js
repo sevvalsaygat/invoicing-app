@@ -100,7 +100,7 @@ function Index({ invoices, setInvoices }) {
                 );
               }}
             />
-            {watchPaymentDueDate && <span className='ml-2 text-blue-500'>Faturanız ödenmediyse, ödeme tarihi girmenize gerek yoktur.</span>}
+            {watchPaymentDueDate && <span className='ml-2 text-blue-500'>{t("form.information.payment_date")}</span>}
           </div>
           <div>
             <label className="text-gray-700 dark:text-gray-200">{t("form.fields.payment_due_date")}</label>
@@ -120,7 +120,7 @@ function Index({ invoices, setInvoices }) {
                 );
               }}
             />
-            {watchPaymentDate && <span className='ml-2 text-blue-500'>Faturanız ödendiyse, son ödeme tarihi girmenize gerek yoktur.</span>}
+            {watchPaymentDate && <span className='ml-2 text-blue-500'>{t("form.information.payment_due_date")}</span>}
           </div>
           <div>
             <label className="text-gray-700 dark:text-gray-200">{t("form.fields.payment_type.label")}</label>

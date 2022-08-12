@@ -30,6 +30,10 @@
     },
     "errors": {
       "required": "This field is required!"
+    },
+    "information": {
+      "payment_date": "If your invoice is unpaid, you do not need to enter a payment date.",
+      "payment_due_date": "If your invoice is paid, you do not need to enter a due date."
     }
   },
   "list": {

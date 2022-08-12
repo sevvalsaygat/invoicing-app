@@ -30,6 +30,10 @@
     },
     "errors": {
       "required": "Bu alan boş bırakılamaz!"
+    },
+    "information": {
+      "payment_date": "Faturanız ödenmemişse, ödeme tarihi girmenize gerek yoktur.",
+      "payment_due_date": "Faturanız ödenmişse, son ödeme tarihi girmenize gerek yoktur."
     }
   },
   "list": {

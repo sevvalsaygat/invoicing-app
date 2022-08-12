@@ -33,10 +33,10 @@ function Index({ invoices, setInvoices }) {
 
   return (
     <section onSubmit={handleSubmit(onSubmit)} className="mt-10 max-w-6xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
-      <ul className='max-w-7xl mx-auto sm:px-6 text-lg border-b-2 border-gray-300 py-6 md:justify-start md:space-x-10 text-neutral-500 font-Times New Roman' href="#">
+      <ul className='max-w-7xl mx-auto sm:px-6 text-lg border-b-2 border-gray-300 py-6 md:justify-start md:space-x-10 text-neutral-500' href="#">
         <span className='ml-10 mr-10 text-3xl font-style: italic text-gray-900 font-sans'>INVOICE.</span>
-        <Link className='ml-10 font-sans' to="/list">{t("form.buttons.list_invoices")}</Link>
-        <LanguageSelect/>
+        <Link className='mr-10 font-sans' to="/list">{t("form.buttons.list_invoices")}</Link>
+        <LanguageSelect />
       </ul>
       <h2 className="text-lg font-semibold text-gray-700 capitalize dark:text-white">...</h2>
       <form>
@@ -151,7 +151,7 @@ function Index({ invoices, setInvoices }) {
                           </td>
                           <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap font-sans'>
                             <input className='mt-5 py-1 px-4 w-16 border border-gray-300 rounded-md'
-                              placeholder= {t("form.fields.items.quantity")}
+                              placeholder={t("form.fields.items.quantity")}
                               {...register(`items[${i}].quantity`, {
                                 required: true,
                                 valueAsNumber: true,
@@ -161,7 +161,7 @@ function Index({ invoices, setInvoices }) {
                           </td>
                           <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap font-sans'>
                             <input className='mt-5 py-1 px-4 w-16 border border-gray-300 rounded-md'
-                              placeholder= {t("form.fields.items.price")}
+                              placeholder={t("form.fields.items.price")}
                               {...register(`items[${i}].price`, {
                                 required: true,
                                 valueAsNumber: true,

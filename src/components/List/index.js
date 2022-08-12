@@ -4,6 +4,7 @@ import Modal from 'react-modal'
 import emailjs from 'emailjs-com'
 import { ToastContainer, toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
+import LanguageSelect from './../LanguageSelect/index'
 import 'react-toastify/dist/ReactToastify.css';
 
 const toastOptions = {
@@ -73,14 +74,11 @@ function Index({ invoices }) {
 
   return (
     <section className="mt-10 max-w-6xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
-      <div className='mb-10 max-w-7xl mx-auto px-4 sm:px-6'>
-        <div className='text-lg flex justify-between items-center border-b-2 border-gray-300 py-6 md:justify-start md:space-x-10 text-neutral-500 font-Times New Roman'>
-          <ul href="#">
-            <span className='ml-10 mr-10 text-3xl font-style: italic text-gray-900 font-sans'>INVOICE.</span>
-            <Link className='ml-10 font-sans' to="/">{t("list.buttons.create_new_invoice")}</Link>
-          </ul>
-        </div>
-      </div>
+      <ul className='max-w-7xl mx-auto sm:px-6 text-lg border-b-2 border-gray-300 py-6 md:justify-start md:space-x-10 text-neutral-500' href="#">
+        <span className='ml-10 mr-10 text-3xl font-style: italic text-gray-900 font-sans'>INVOICE.</span>
+        <Link className='mr-10 font-sans' to="/">{t("list.buttons.create_new_invoice")}</Link>
+        <LanguageSelect />
+      </ul>
       <h2 className="text-3xl font-semibold text-center text-gray-800 dark:text-white font-sans">{t("list.title")}</h2>
       <p className="mt-3 mb-20 text-center text-gray-600 dark:text-gray-400 font-sans">
         <b className="font-style: italic text-gray-900 font-sans mr-1">INVOICE,</b>
@@ -104,16 +102,16 @@ function Index({ invoices }) {
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="py-3 px-6 font-sans">
-              {t("list.table.title")}
+                {t("list.table.title")}
               </th>
               <th scope="col" className="py-3 px-6 font-sans">
-              {t("list.table.recipent_name")}
+                {t("list.table.recipent_name")}
               </th>
               <th scope="col" className="py-3 px-6 font-sans">
-              {t("list.table.payment_date")}
+                {t("list.table.payment_date")}
               </th>
               <th scope="col" className="py-3 px-6 font-sans">
-              {t("list.table.details")}
+                {t("list.table.details")}
               </th>
               <th scope="col" className="py-3 px-6">
               </th>

@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from "react-router-dom"
-import { useForm, useFieldArray } from "react-hook-form";
+import { useForm, useFieldArray, Controller } from "react-hook-form";
 import { useTranslation } from 'react-i18next';
 import LanguageSelect from './../LanguageSelect/index'
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const defaultItemValue = {
   service: '',
@@ -80,29 +82,46 @@ function Index({ invoices, setInvoices }) {
             />
             {errors.receiver_email && <span className='text-red-500'>{t("form.errors.required")}</span>}
           </div>
-          {
-            !watchPaymentDueDate && (
-              <div>
-                <label className="text-gray-700 dark:text-gray-200">{t("form.fields.payment_date")}</label>
-                <input
-                  className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring font-sans"
-                  type="date"
-                  {...register("payment_date", { required: false })} />
-              </div>
-            )
-          }
-          {
-            !watchPaymentDate && (
-              <div>
-                <label className="text-gray-700 dark:text-gray-200">{t("form.fields.payment_due_date")}</label>
-                <input
-                  className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring font-sans"
-                  type="date"
-                  {...register("payment_due_date", { required: false })}
-                />
-              </div>
-            )
-          }
+          <div>
+            <label className="text-gray-700 dark:text-gray-200">{t("form.fields.payment_date")}</label>
+            <Controller
+              name={"payment_date"}
+              control={control}
+              render={({ field: { onChange, value } }) => {
+                return (
+                  <DatePicker
+                    className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring font-sans'
+                    onChange={onChange}
+                    disabled={watchPaymentDueDate}
+                    selected={value}
+                    minDate={new Date()}
+                    placeholderText={t("form.fields.payment_date")}
+                  />
+                );
+              }}
+            />
+            {watchPaymentDueDate && <span className='ml-2 text-blue-500'>Faturanız ödenmediyse, ödeme tarihi girmenize gerek yoktur.</span>}
+          </div>
+          <div>
+            <label className="text-gray-700 dark:text-gray-200">{t("form.fields.payment_due_date")}</label>
+            <Controller
+              name={"payment_due_date"}
+              control={control}
+              render={({ field: { onChange, value } }) => {
+                return (
+                  <DatePicker
+                    className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring font-sans'
+                    onChange={onChange}
+                    disabled={watchPaymentDate}
+                    selected={value}
+                    minDate={new Date()}
+                    placeholderText={t("form.fields.payment_due_date")}
+                  />
+                );
+              }}
+            />
+            {watchPaymentDate && <span className='ml-2 text-blue-500'>Faturanız ödendiyse, son ödeme tarihi girmenize gerek yoktur.</span>}
+          </div>
           <div>
             <label className="text-gray-700 dark:text-gray-200">{t("form.fields.payment_type.label")}</label>
             <select

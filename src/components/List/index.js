@@ -36,10 +36,10 @@ function Index({ invoices }) {
     if (selectedFilterType === 'default') {
       setFilteredInvoices(invoices)
     } else if (selectedFilterType === 'paid_invocies') {
-      const filteredData = invoices.filter(invoice => invoice.payment_date !== null && invoice.payment_date !== "");
+      const filteredData = invoices.filter(invoice => invoice.payment_date !== undefined && invoice.payment_date !== "");
       setFilteredInvoices(filteredData)
     } else if (selectedFilterType === 'unpaid_invoices') {
-      const filteredData = invoices.filter(invoice => invoice.payment_date === null || invoice.payment_date === "");
+      const filteredData = invoices.filter(invoice => invoice.payment_date === undefined || invoice.payment_date === "");
       setFilteredInvoices(filteredData)
     }
   }
@@ -129,7 +129,7 @@ function Index({ invoices }) {
                     {invoice.recipent}
                   </td>
                   <td className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white font-sans">
-                    {invoice.payment_date}
+                    {invoice.payment_date && invoice.payment_date.toLocaleDateString()}
                   </td>
                   <td className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     <button className="px-3 py-1 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600 font-sans" onClick={() => {

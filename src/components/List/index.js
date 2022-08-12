@@ -79,7 +79,7 @@ function Index({ invoices }) {
         <Link className='mr-10 font-sans' to="/">{t("list.buttons.create_new_invoice")}</Link>
         <LanguageSelect />
       </ul>
-      <h2 className="text-3xl font-semibold text-center text-gray-800 dark:text-white font-sans">{t("list.title")}</h2>
+      <h2 className="mt-10 text-3xl font-semibold text-center text-gray-800 dark:text-white font-sans">{t("list.title")}</h2>
       <p className="mt-3 mb-20 text-center text-gray-600 dark:text-gray-400 font-sans">
         <b className="font-style: italic text-gray-900 font-sans mr-1">INVOICE,</b>
         {t("list.description")}</p>

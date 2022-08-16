@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom"
-import Modal from 'react-modal'
 import emailjs from 'emailjs-com'
 import { ToastContainer, toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
@@ -22,7 +21,6 @@ function Index() {
   const { invoices } = useContext(MainContext)
   const { t } = useTranslation()
   const [filteredInvoices, setFilteredInvoices] = useState(invoices)
-  const [modal, setModal] = useState({ isOpened: false, invoice: null })
 
   const filterByInput = (e) => {
     const searchedWords = e.target.value
@@ -45,24 +43,6 @@ function Index() {
       setFilteredInvoices(filteredData)
     }
   }
-
-  function afterOpenModal() {
-  }
-
-  function closeModal() {
-    setModal({ isOpened: false, invoice: null });
-  }
-
-  const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-    },
-  };
 
   const onClickEmailButton = (invoice) => {
 
@@ -135,7 +115,6 @@ function Index() {
                   </td>
                   <td className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     <button className="px-3 py-1 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600 font-sans" onClick={() => {
-                      setModal({ isOpened: true, invoice: invoice })
                     }}>{t("list.buttons.details")}</button></td>
                   <td className="py-4 px-6 font-medium font-light text-gray-900 whitespace-nowrap dark:text-white">
                     <button className="bg-transparent hover:bg-blue-100 text-blue-800 hover:text-white py-1 px-3 border border-blue-500 hover:border-transparent rounded font-sans"
@@ -146,48 +125,6 @@ function Index() {
                 </tr>
               ))
             }
-            <Modal
-              isOpen={modal.isOpened}
-              style={customStyles}
-              onAfterOpen={afterOpenModal}
-              ariaHideApp={false}
-              onRequestClose={closeModal}
-            >
-              {modal.invoice && (
-                <div>
-                  <p><b>{t("list.modal.table.description")}: </b>{modal.invoice.description}</p>
-                  <table className='w-full border mt-10 text-center'>
-                    <tbody>
-                      <tr>
-                        <th scope="col" className="py-3 px-6 font-sans">{t("list.modal.table.service")}</th>
-                        <th scope="col" className="py-3 px-6 font-sans">{t("list.modal.table.quantity")}</th>
-                        <th scope="col" className="py-3 px-6 font-sans">{t("list.modal.table.price")}</th>
-                        <th scope="col" className="py-3 px-6 font-sans">{t("list.modal.table.total")}</th>
-                      </tr>
-                      {
-                        modal.invoice.items.map((item, i) => (
-                          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-                            key={i}>
-                            <td className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white font-sans">
-                              {item.service}
-                            </td>
-                            <td className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white font-sans">
-                              {item.quantity}
-                            </td>
-                            <td className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white font-sans">
-                              {item.price}
-                            </td>
-                            <td className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white font-sans">
-                              {item.price * item.quantity}
-                            </td>
-                          </tr>
-                        ))
-                      }
-                    </tbody>
-                  </table>
-                </div>
-              )}
-            </Modal>
           </tbody>
         </table>
       </div>

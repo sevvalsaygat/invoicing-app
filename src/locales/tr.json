@@ -60,15 +60,6 @@
       "payment_date": "Ödeme Tarihi",
       "details": "Detaylar"
     },
-    "modal": {
-      "table": {
-        "description": "Açıklama",
-        "service": "Hizmet",
-        "quantity": "Miktar",
-        "price": "Fiyat",
-        "total": "Toplam"
-      }
-    },
     "toasts": {
       "email": {
         "on_succes": "E-posta başarıyla gönderildi!",

@@ -60,15 +60,6 @@
       "payment_date": "Payment Date",
       "details": "Details"
     },
-    "modal": {
-      "table": {
-        "description": "Description",
-        "service": "Service",
-        "quantity": "Quantity",
-        "price": "Price",
-        "total": "Total"
-      }
-    },
     "toasts": {
       "email": {
         "on_succes": "Email sent successfully!",

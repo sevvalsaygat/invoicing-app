@@ -1,7 +1,7 @@
 import React from 'react'
 import Form from '../components/Form/index'
 
-function Home({ invoices, setInvoices }) {
+function Create({ invoices, setInvoices }) {
 
   return (
     <div>
@@ -10,4 +10,4 @@ function Home({ invoices, setInvoices }) {
   )
 }
 
-export default Home
+export default Create

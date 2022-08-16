@@ -9,7 +9,7 @@ function App() {
   return (
     <Routes>
       <Route path='/' element={<Create invoices={invoices} setInvoices={setInvoices} />} />
-      <Route path='/list' element={<List invoices={invoices} />} />
+      <Route path='/List' element={<List invoices={invoices} />} />
     </Routes>
   );
 }

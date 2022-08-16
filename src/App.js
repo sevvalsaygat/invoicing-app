@@ -2,15 +2,23 @@ import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import List from "./components/List/index"
 import Create from './pages/Create';
+import { MainContext } from './context'
 
 function App() {
   const [invoices, setInvoices] = useState([])
 
+  const data = {
+    invoices,
+    setInvoices
+  }
+
   return (
-    <Routes>
-      <Route path='/' element={<Create invoices={invoices} setInvoices={setInvoices} />} />
-      <Route path='/List' element={<List invoices={invoices} />} />
-    </Routes>
+    <MainContext.Provider value={data}>
+      <Routes>
+        <Route path='/' element={<Create />} />
+        <Route path='/List' element={<List />} />
+      </Routes>
+    </MainContext.Provider>
   );
 }
 

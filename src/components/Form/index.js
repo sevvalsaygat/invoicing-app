@@ -4,6 +4,7 @@ import { useForm, useFieldArray, Controller } from "react-hook-form";
 import { useTranslation } from 'react-i18next';
 import LanguageSelect from './../LanguageSelect/index'
 import DatePicker from "react-datepicker";
+import { MainContext, useContext } from './../../context';
 import "react-datepicker/dist/react-datepicker.css";
 
 const defaultItemValue = {
@@ -12,7 +13,8 @@ const defaultItemValue = {
   price: '0'
 }
 
-function Index({ invoices, setInvoices }) {
+function Index() {
+  const { invoices, setInvoices } = useContext(MainContext)
   const { t } = useTranslation()
   const { register, watch, handleSubmit, control, reset, formState: { errors } } = useForm({
     defaultValues: {

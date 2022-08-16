@@ -5,6 +5,7 @@ import emailjs from 'emailjs-com'
 import { ToastContainer, toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import LanguageSelect from './../LanguageSelect/index'
+import { MainContext, useContext } from './../../context';
 import 'react-toastify/dist/ReactToastify.css';
 
 const toastOptions = {
@@ -17,7 +18,8 @@ const toastOptions = {
   progress: undefined,
 }
 
-function Index({ invoices }) {
+function Index() {
+  const { invoices } = useContext(MainContext)
   const { t } = useTranslation()
   const [filteredInvoices, setFilteredInvoices] = useState(invoices)
   const [modal, setModal] = useState({ isOpened: false, invoice: null })

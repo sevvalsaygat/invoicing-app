@@ -1,12 +1,11 @@
 import React from 'react'
 import Form from '../components/Form/index'
 
-
-function Create({ invoices, setInvoices }) {
+function Create() {
 
   return (
     <div>
-      <Form invoices={invoices} setInvoices={setInvoices} />
+      <Form />
     </div>
   )
 }

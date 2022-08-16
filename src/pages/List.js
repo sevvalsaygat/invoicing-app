@@ -1,11 +1,11 @@
 import React from 'react'
 import List from '../components/List/index'
 
-function List({ invoices }) {
+function List() {
 
   return (
     <div>
-      <List invoices={invoices} />
+      <List />
     </div>
   )
 }

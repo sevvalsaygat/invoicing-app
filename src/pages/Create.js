@@ -1,6 +1,7 @@
 import React from 'react'
 import Form from '../components/Form/index'
 
+
 function Create({ invoices, setInvoices }) {
 
   return (

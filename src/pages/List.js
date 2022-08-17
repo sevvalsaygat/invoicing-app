@@ -1,11 +1,11 @@
 import React from 'react'
-import List from '../components/List/index'
+import ListComp from '../components/List/index'
 
 function List() {
 
   return (
     <div>
-      <List />
+      <ListComp />
     </div>
   )
 }

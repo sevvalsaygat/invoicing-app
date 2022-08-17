@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import LanguageSelect from './../LanguageSelect/index'
 import DatePicker from "react-datepicker";
 import { MainContext, useContext } from './../../context';
+import { nanoid } from 'nanoid'
 import "react-datepicker/dist/react-datepicker.css";
 
 const defaultItemValue = {
@@ -28,6 +29,7 @@ function Index() {
   });
 
   const onSubmit = (data) => {
+    data.id = nanoid()
     setInvoices([...invoices, data])
     reset()
   };
@@ -36,14 +38,14 @@ function Index() {
   const watchPaymentDueDate = watch("payment_due_date");
 
   return (
-    <section onSubmit={handleSubmit(onSubmit)} className="mt-10 max-w-6xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
+    <section className="mt-10 max-w-6xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
       <ul className='max-w-7xl mx-auto sm:px-6 text-lg border-b-2 border-gray-300 py-6 md:justify-start md:space-x-10 text-neutral-500' href="#">
         <span className='ml-10 mr-10 text-3xl font-style: italic text-gray-900 font-sans'>INVOICE.</span>
         <Link className='mr-10 font-sans' to="/list">{t("form.buttons.list_invoices")}</Link>
         <LanguageSelect />
       </ul>
       <h2 className="text-lg font-semibold text-gray-700 capitalize dark:text-white">...</h2>
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
           <div>
             <label className="text-gray-700 dark:text-gray-200">{t("form.fields.title")}</label>

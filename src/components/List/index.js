@@ -113,9 +113,9 @@ function Index() {
                   <td className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white font-sans">
                     {invoice.payment_date && invoice.payment_date.toLocaleDateString()}
                   </td>
-                  <td className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    <button className="px-3 py-1 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600 font-sans" onClick={() => {
-                    }}>{t("list.buttons.details")}</button></td>
+                  <td><Link to={`/details/${invoice.id}`} className="p4 bg-gray-500 hover:bg-gray-600 text-white rounded-md p-2 mt-3">
+                    View Details
+                  </Link></td>
                   <td className="py-4 px-6 font-medium font-light text-gray-900 whitespace-nowrap dark:text-white">
                     <button className="bg-transparent hover:bg-blue-100 text-blue-800 hover:text-white py-1 px-3 border border-blue-500 hover:border-transparent rounded font-sans"
                       position="top-right"

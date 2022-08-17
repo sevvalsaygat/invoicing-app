@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import List from "./components/List/index"
+import List from "./pages/List";
 import Create from './pages/Create';
+import Details from './pages/Details';
 import { MainContext } from './context'
 
 function App() {
@@ -16,7 +17,8 @@ function App() {
     <MainContext.Provider value={data}>
       <Routes>
         <Route path='/' element={<Create />} />
-        <Route path='/List' element={<List />} />
+        <Route path='/list' element={<List />} />
+        <Route path='/details/:id' element={<Details />} />
       </Routes>
     </MainContext.Provider>
   );

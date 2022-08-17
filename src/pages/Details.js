@@ -41,6 +41,12 @@ function Details() {
               <td className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white font-sans">
                 {currentInvoice.description}
               </td>
+              <td className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white font-sans">
+                {currentInvoice.receiver_email}
+              </td>
+              <td className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white font-sans">
+                {currentInvoice.payment_type}
+              </td>
             </tr>
           </tbody>
         </table>

@@ -30,6 +30,7 @@ function Index() {
 
   const onSubmit = (data) => {
     data.id = nanoid()
+    console.log(data.id)
     setInvoices([...invoices, data])
     reset()
   };

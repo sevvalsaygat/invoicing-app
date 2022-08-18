@@ -53,9 +53,9 @@ function Index() {
               className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring font-sans"
               type="text"
               placeholder={t("form.fields.title")}
-              {...register("title", { required: true })}
+              {...register("title", { required: t("form.errors.required") })}
             />
-            {errors.title && <span className='text-red-500'>{t("form.errors.required")}</span>}
+            {errors.title && <span className='text-red-500'>{errors.title?.message}</span>}
           </div>
           <div>
             <label className="text-gray-700 dark:text-gray-200">{t("form.fields.description")}</label>
@@ -72,24 +72,25 @@ function Index() {
               className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring font-sans"
               type="text"
               placeholder={t("form.fields.recipent_name")}
-              {...register("recipent", { required: true })}
+              {...register("recipent", { required: t("form.errors.required") })}
             />
-            {errors.title && <span className='text-red-500'>{t("form.errors.required")}</span>}
+            {errors.recipent && <span className='text-red-500'>{errors.recipent?.message}</span>}
           </div>
           <div>
             <label className="text-gray-700 dark:text-gray-200">{t("form.fields.reciver_email")}</label>
             <input
               className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring font-sans"
-              type="email"
+              type="text"
               placeholder={t("form.fields.reciver_email")}
               {...register("receiver_email", {
-                required: true,
+                required: t("form.errors.required"),
                 pattern: {
-                  value: /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g
+                  value: /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g,
+                  message: t("form.errors.reciver_message"),
                 },
               })}
             />
-            {errors.receiver_email && <span className='text-red-500'>{t("form.errors.required")}</span>}
+            {errors.receiver_email && <span className='text-red-500'>{errors.receiver_email?.message}</span>}
           </div>
           <div>
             <label className="text-gray-700 dark:text-gray-200">{t("form.fields.payment_date")}</label>
@@ -135,13 +136,13 @@ function Index() {
             <label className="text-gray-700 dark:text-gray-200">{t("form.fields.payment_type.label")}</label>
             <select
               className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring font-sans"
-              {...register("payment_type", { required: true })}>
+              {...register("payment_type", { required: t("form.errors.required") })}>
               <option value="">{t("form.fields.payment_type.options.default")}</option>
               <option value="credit_card">{t("form.fields.payment_type.options.credit_card")}</option>
               <option value="check">{t("form.fields.payment_type.options.check")}</option>
               <option value="cash">{t("form.fields.payment_type.options.cash")}</option>
             </select>
-            {errors.payment_type && <span className='text-red-500'>{t("form.errors.required")}</span>}
+            {errors.payment_type && <span className='text-red-500'>{errors.payment_type?.message}</span>}
           </div>
         </div>
         <div className="flex flex-col">

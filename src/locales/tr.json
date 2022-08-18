@@ -29,7 +29,8 @@
       }
     },
     "errors": {
-      "required": "Bu alan boş bırakılamaz!"
+      "required": "Bu alan boş bırakılamaz!",
+      "reciver_message": "Geçersiz e-posta adresi"
     },
     "information": {
       "payment_date": "Faturanız ödenmemişse, ödeme tarihi girmenize gerek yoktur.",
@@ -58,7 +59,8 @@
       "title": "Başlık",
       "recipent_name": "Alıcı Adı",
       "payment_date": "Ödeme Tarihi",
-      "details": "Detaylar"
+      "details": "Detaylar",
+      "delete": "Sil"
     },
     "toasts": {
       "email": {
@@ -72,5 +74,14 @@
       "tr": "Türkçe",
       "en": "İngilizce"
     }
+  },
+  "details": {
+    "table": {
+      "service": "Hizmet",
+      "quantity": "Miktar",
+      "price": "Fiyat",
+      "total": "Toplam"
+    },
+    "error": "Bu id'ye ait bir fatura bulunamadı!"
   }
 }

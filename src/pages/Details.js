@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { MainContext, useContext } from './../context';
+import { useTranslation } from 'react-i18next';
 
 function Details() {
   const { id } = useParams();
+  const { t } = useTranslation()
   const { invoices } = useContext(MainContext)
   const [currentInvoice, setCurrentInvoice] = useState(null)
 
@@ -19,7 +21,7 @@ function Details() {
 
   if (currentInvoice === null) {
     return (
-      <h1>Bu id'ye ait bir fatura bulunamadı.</h1>
+      <h1>{t("details.error")}</h1>
     )
   }
 
@@ -55,10 +57,10 @@ function Details() {
         <table className='w-500 border mt-10 text-center'>
           <tbody>
             <tr>
-              <th scope="col" className="py-3 px-6 font-sans">Service</th>
-              <th scope="col" className="py-3 px-6 font-sans">Quantity</th>
-              <th scope="col" className="py-3 px-6 font-sans">Price</th>
-              <th scope="col" className="py-3 px-6 font-sans">Total</th>
+              <th scope="col" className="py-3 px-6 font-sans">{t("details.table.service")}</th>
+              <th scope="col" className="py-3 px-6 font-sans">{t("details.table.quantity")}</th>
+              <th scope="col" className="py-3 px-6 font-sans">{t("details.table.price")}</th>
+              <th scope="col" className="py-3 px-6 font-sans">{t("details.table.total")}</th>
             </tr>
             {
               currentInvoice.items.map((item, i) => (

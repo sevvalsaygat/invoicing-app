@@ -131,7 +131,7 @@ function Index() {
                     {invoice.payment_date && invoice.payment_date.toLocaleDateString()}
                   </td>
                   <td><Link to={`/details/${invoice.id}`} className="p4 bg-gray-500 hover:bg-gray-600 text-white rounded-md p-2 mt-3">
-                    View Details
+                    {t("list.table.details")}
                   </Link>
                   </td>
                   <td className="py-4 px-6 font-medium font-light text-gray-900 whitespace-nowrap dark:text-white">
@@ -144,7 +144,7 @@ function Index() {
                     <button className="bg-transparent hover:bg-blue-100 text-blue-800 hover:text-white py-1 px-3 border border-blue-500 hover:border-transparent rounded font-sans"
                       onClick={() => {
                         onClickDeleteButton(invoice)
-                      }}>Delete</button>
+                      }}> {t("list.table.delete")}</button>
                   </td>
                 </tr>
               ))

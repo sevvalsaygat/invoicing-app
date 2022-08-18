@@ -29,7 +29,8 @@
       }
     },
     "errors": {
-      "required": "This field is required!"
+      "required": "This field is required!",
+      "reciver_message": "invalid email address"
     },
     "information": {
       "payment_date": "If your invoice is unpaid, you do not need to enter a payment date.",
@@ -58,7 +59,8 @@
       "title": "Title",
       "recipent_name": "Recipent Name",
       "payment_date": "Payment Date",
-      "details": "Details"
+      "details": "Details",
+      "delete": "Delete"
     },
     "toasts": {
       "email": {
@@ -72,5 +74,14 @@
       "tr": "Turkish",
       "en": "English"
     }
+  },
+  "details": {
+    "table": {
+      "service": "Service",
+      "quantity": "Quantity",
+      "price": "Price",
+      "total": "Total"
+    },
+    "error": "No invoice for this id!"
   }
 }

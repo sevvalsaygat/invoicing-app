@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { MainContext, useContext } from './../context';
 import { useTranslation } from 'react-i18next';
+import LanguageSelect from '../components/LanguageSelect/index'
+
 
 function Details() {
   const { id } = useParams();
@@ -27,8 +29,12 @@ function Details() {
 
   return (
     <section className="mt-10 max-w-6xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
+      <ul className='max-w-7xl mx-auto sm:px-6 text-lg border-b-2 border-gray-300 py-6 md:justify-start md:space-x-10 text-neutral-500' href="#">
+        <span className='ml-10 mr-10 text-3xl font-style: italic text-gray-900 font-sans'>INVOICE.</span>
+        <LanguageSelect />
+      </ul>
       <div>
-        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <table className="mt-10 w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <tbody>
             <tr>
               <td className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white font-sans">

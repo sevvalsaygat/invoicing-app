@@ -5,6 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import LanguageSelect from './../LanguageSelect/index'
 import { MainContext, useContext } from './../../context';
+import swal from 'sweetalert';
 import 'react-toastify/dist/ReactToastify.css';
 
 const toastOptions = {
@@ -54,6 +55,20 @@ function Index() {
       });
   }
 
+  const onClickDeleteButton = (invoice) => {
+    swal({
+      title: "Are you sure?",
+      text: "Are you sure you want to delete this invoice?",
+      icon: "warning",
+      dangerMode: true,
+    })
+      .then(willDelete => {
+        if (willDelete) {
+          swal("Deleted!", "Your invoice has been deleted!", "success");
+        }
+      });
+  }
+
   return (
     <section className="mt-10 max-w-6xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
       <ul className='max-w-7xl mx-auto sm:px-6 text-lg border-b-2 border-gray-300 py-6 md:justify-start md:space-x-10 text-neutral-500' href="#">
@@ -97,6 +112,8 @@ function Index() {
               </th>
               <th scope="col" className="py-3 px-6">
               </th>
+              <th scope="col" className="py-3 px-6">
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -123,6 +140,12 @@ function Index() {
                       onClick={() => {
                         onClickEmailButton(invoice)
                       }}>{t("list.buttons.send_email")}</button></td>
+                  <td className="py-4 px-6 font-medium font-light text-gray-900 whitespace-nowrap dark:text-white">
+                    <button className="bg-transparent hover:bg-blue-100 text-blue-800 hover:text-white py-1 px-3 border border-blue-500 hover:border-transparent rounded font-sans"
+                      onClick={() => {
+                        onClickDeleteButton(invoice)
+                      }}>Delete</button>
+                  </td>
                 </tr>
               ))
             }

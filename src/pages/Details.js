@@ -36,19 +36,19 @@ function Details() {
       <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
         <div className='mt-10 py-4 bg-white shadow-md rounded-lg dark:bg-gray-800'>
           <div className=" px-6 font-medium text-gray-900 dark:text-white font-sans">
-            <span className='ml-5 mr-5 text-gray-900 font-sans'>TITLE:</span>
+            <span className='ml-5 mr-5 text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 font-sans'>TITLE:</span>
             {currentInvoice.title}
           </div>
           <div className="mt-2 px-6 font-medium text-gray-900 dark:text-white font-sans">
-            <span className='ml-5 mr-5 text-gray-900 font-sans'>RECIPENT NAME:</span>
+            <span className='ml-5 mr-5 text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 font-sans'>RECIPENT NAME:</span>
             {currentInvoice.recipent}
           </div>
           <div className="mt-2 px-6 font-medium text-gray-900 dark:text-white font-sans">
-            <span className='ml-5 mr-5 text-gray-900 font-sans'>RECEIVER E-MAIL:</span>
+            <span className='ml-5 mr-5 text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 font-sans'>RECEIVER E-MAIL:</span>
             {currentInvoice.receiver_email}
           </div>
           <div className="mt-2 px-6 font-medium text-gray-900 dark:text-white font-sans">
-            <span className='ml-5 mr-5 text-gray-900 font-sans'>PAYMENT TYPE:</span>
+            <span className='ml-5 mr-5 text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 font-sans'>PAYMENT TYPE:</span>
             {currentInvoice.payment_type}
           </div>
         </div>
@@ -73,7 +73,7 @@ function Details() {
       </div>
       <div>
         <table className="w-full mb-20 text-sm text-left uppercase text-gray-500 dark:text-gray-400">
-          <tbody className="text-xs text-gray-700 bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
+          <tbody className="text-xs text-gray-700 bg-gray-100 shadow-md sm:rounded-lg dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="py-3 px-6 font-sans">{t("details.table.service")}</th>
               <th scope="col" className="py-3 px-6 font-sans">{t("details.table.quantity")}</th>

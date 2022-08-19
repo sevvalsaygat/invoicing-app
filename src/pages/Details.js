@@ -23,7 +23,7 @@ function Details() {
 
   if (currentInvoice === null) {
     return (
-      <h1>{t("details.error")}</h1>
+      <h1>{t("details.error.error_message")}</h1>
     )
   }
 
@@ -33,41 +33,41 @@ function Details() {
         <span className='ml-10 mr-10 text-3xl font-style: italic text-gray-900 font-sans'>INVOICE.</span>
         <LanguageSelect />
       </ul>
-      <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
-        <div className='mt-10 py-4 bg-white shadow-md rounded-lg dark:bg-gray-800'>
+      <div className="flex justify-around mt-5">
+        <div className='mt-10 h-40 w-100 py-4 bg-white shadow-md rounded-lg dark:bg-gray-800'>
           <div className=" px-6 font-medium text-gray-900 dark:text-white font-sans">
-            <span className='ml-5 mr-5 text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 font-sans'>TITLE:</span>
+            <span className='ml-5 mr-5 border border-gray-100 rounded-md px-2 py-1 text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 font-sans'>{t("details.fields.title")}:</span>
             {currentInvoice.title}
           </div>
           <div className="mt-2 px-6 font-medium text-gray-900 dark:text-white font-sans">
-            <span className='ml-5 mr-5 text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 font-sans'>RECIPENT NAME:</span>
+            <span className='ml-5 mr-5 border border-gray-100 rounded-md px-2 py-1 text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 font-sans'>{t("details.fields.recipent_name")}:</span>
             {currentInvoice.recipent}
           </div>
           <div className="mt-2 px-6 font-medium text-gray-900 dark:text-white font-sans">
-            <span className='ml-5 mr-5 text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 font-sans'>RECEIVER E-MAIL:</span>
+            <span className='ml-5 mr-5 border border-gray-100 rounded-md px-2 py-1 text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 font-sans'>{t("details.fields.receiver_email")}:</span>
             {currentInvoice.receiver_email}
           </div>
           <div className="mt-2 px-6 font-medium text-gray-900 dark:text-white font-sans">
-            <span className='ml-5 mr-5 text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 font-sans'>PAYMENT TYPE:</span>
+            <span className='ml-5 mr-5 border border-gray-100 rounded-md px-2 py-1 text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 font-sans'>{t("details.fields.payment_type")}:</span>
             {currentInvoice.payment_type}
           </div>
         </div>
-        <div class="mt-10 max-w-xl px-8 py-4 bg-white rounded-lg shadow-md dark:bg-gray-800">
-          <div class="flex items-center justify-between">
-            <div class="mt-2">
-              <a href="#" class="text-2xl font-bold text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 hover:underline">Explanation about the invoice!</a>
-              <p class="mt-2 text-gray-600 dark:text-gray-300">{currentInvoice.description}</p>
+        <div className="mt-10 mb-20 h-40 w-100 max-w-xl max-h-60 overflow-auto px-8 py-4 bg-white rounded-lg shadow-md dark:bg-gray-800">
+          <div className="flex items-center justify-between">
+            <div className="mt-2">
+              <a href="#" className="text-2xl font-bold text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 hover:underline">{t("details.quantity.title")}</a>
+              <p className="mt-2 text-gray-600 dark:text-gray-300">{currentInvoice.description}</p>
             </div>
           </div>
         </div>
       </div>
       <div className='float-right mb-10'>
         <div className="mt-20 px-6 font-medium text-gray-900 dark:text-white font-sans">
-          <span className='ml-5 mr-5 underline text-gray-900 font-sans'>Payment Date:</span>
+          <span className='ml-5 mr-5 underline text-gray-900 font-sans'>{t("details.fields.payment_date")}:</span>
           {currentInvoice.payment_date && currentInvoice.payment_date.toLocaleDateString()}
         </div>
         <div className="mt-2 px-6 font-medium text-gray-900 dark:text-white font-sans">
-          <span className='ml-5 mr-5 underline text-gray-900 font-sans'>Payment Due Date:</span>
+          <span className='ml-5 mr-5 underline text-gray-900 font-sans'>{t("details.fields.payment_due_date")}:</span>
           {currentInvoice.payment_due_date && currentInvoice.payment_due_date.toLocaleDateString()}
         </div>
       </div>

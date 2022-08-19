@@ -90,6 +90,19 @@
       "price": "Fiyat",
       "total": "Toplam"
     },
-    "error": "Bu id'ye ait bir fatura bulunamadı!"
+    "error": {
+      "error_message": "Bu id'ye ait bir fatura bulunamadı"
+    },
+    "fields": {
+      "title": "BAŞLIK",
+      "recipent_name": "ALICI ADI",
+      "receiver_email": "ALICI E-POSTA",
+      "payment_type": "ÖDEME TİPİ",
+      "payment_date": "Ödeme Tarihi",
+      "payment_due_date": "Son Ödeme Tarihi"
+    },
+    "quantity": {
+      "title": "Fatura hakkında açıklama!"
+    }
   }
 }

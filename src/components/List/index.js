@@ -19,7 +19,7 @@ const toastOptions = {
 }
 
 function Index() {
-  const { invoices } = useContext(MainContext)
+  const { invoices, setInvoices } = useContext(MainContext)
   const { t } = useTranslation()
   const [filteredInvoices, setFilteredInvoices] = useState(invoices)
 
@@ -64,6 +64,9 @@ function Index() {
     })
       .then(willDelete => {
         if (willDelete) {
+          const filteredInvoicesData = invoices.filter(i => i.id !== invoice.id)
+          setFilteredInvoices(filteredInvoicesData)
+          setInvoices(filteredInvoicesData)
           swal(t("list.table.modal.delete.title"), t("list.table.modal.delete.text"), "success");
         }
       });

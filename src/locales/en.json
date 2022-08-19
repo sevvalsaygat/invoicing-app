@@ -90,6 +90,19 @@
       "price": "Price",
       "total": "Total"
     },
-    "error": "No invoice for this id!"
+    "error": {
+      "error_message": "No invoice for this id!"
+    },
+    "fields": {
+      "title": "TITLE",
+      "recipent_name": "RECIPENT NAME",
+      "receiver_email": "RECEIVER E-MAIL",
+      "payment_type": "PAYMENT TYPE",
+      "payment_date": "Payment Date",
+      "payment_due_date": "Payment Due Date"
+    },
+    "quantity": {
+      "title": "Explanation about the invoice!"
+    }
   }
 }

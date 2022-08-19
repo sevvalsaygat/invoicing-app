@@ -57,14 +57,14 @@ function Index() {
 
   const onClickDeleteButton = (invoice) => {
     swal({
-      title: "Are you sure?",
-      text: "Are you sure you want to delete this invoice?",
+      title: t("list.table.modal.title"),
+      text: t("list.table.modal.text"),
       icon: "warning",
       dangerMode: true,
     })
       .then(willDelete => {
         if (willDelete) {
-          swal("Deleted!", "Your invoice has been deleted!", "success");
+          swal(t("list.table.modal.delete.title"), t("list.table.modal.delete.text"), "success");
         }
       });
   }

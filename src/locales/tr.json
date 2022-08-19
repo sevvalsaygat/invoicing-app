@@ -60,7 +60,15 @@
       "recipent_name": "Alıcı Adı",
       "payment_date": "Ödeme Tarihi",
       "details": "Detaylar",
-      "delete": "Sil"
+      "delete": "Sil",
+      "modal": {
+        "title": "Emin misiniz?",
+        "text": "Bu faturayı silmek istediğinizden emin misiniz?",
+        "delete": {
+          "title": "Silindi!",
+          "text": "Faturanız silindi!"
+        }
+      }
     },
     "toasts": {
       "email": {

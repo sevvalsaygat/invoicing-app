@@ -33,35 +33,47 @@ function Details() {
         <span className='ml-10 mr-10 text-3xl font-style: italic text-gray-900 font-sans'>INVOICE.</span>
         <LanguageSelect />
       </ul>
-      <div>
-        <table className="mt-10 w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <tbody>
-            <tr>
-              <td className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white font-sans">
-                {currentInvoice.title}
-              </td>
-              <td className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white font-sans">
-                {currentInvoice.recipent}
-              </td>
-              <td className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white font-sans">
-                {currentInvoice.payment_date && currentInvoice.payment_date.toLocaleDateString()}
-              </td>
-              <td className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white font-sans">
-                {currentInvoice.description}
-              </td>
-              <td className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white font-sans">
-                {currentInvoice.receiver_email}
-              </td>
-              <td className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white font-sans">
-                {currentInvoice.payment_type}
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+        <div className='mt-10 py-4 bg-white shadow-md rounded-lg dark:bg-gray-800'>
+          <div className=" px-6 font-medium text-gray-900 dark:text-white font-sans">
+            <span className='ml-5 mr-5 text-gray-900 font-sans'>TITLE:</span>
+            {currentInvoice.title}
+          </div>
+          <div className="mt-2 px-6 font-medium text-gray-900 dark:text-white font-sans">
+            <span className='ml-5 mr-5 text-gray-900 font-sans'>RECIPENT NAME:</span>
+            {currentInvoice.recipent}
+          </div>
+          <div className="mt-2 px-6 font-medium text-gray-900 dark:text-white font-sans">
+            <span className='ml-5 mr-5 text-gray-900 font-sans'>RECEIVER E-MAIL:</span>
+            {currentInvoice.receiver_email}
+          </div>
+          <div className="mt-2 px-6 font-medium text-gray-900 dark:text-white font-sans">
+            <span className='ml-5 mr-5 text-gray-900 font-sans'>PAYMENT TYPE:</span>
+            {currentInvoice.payment_type}
+          </div>
+        </div>
+        <div class="mt-10 max-w-xl px-8 py-4 bg-white rounded-lg shadow-md dark:bg-gray-800">
+          <div class="flex items-center justify-between">
+            <div class="mt-2">
+              <a href="#" class="text-2xl font-bold text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 hover:underline">Explanation about the invoice!</a>
+              <p class="mt-2 text-gray-600 dark:text-gray-300">{currentInvoice.description}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className='float-right mb-10'>
+        <div className="mt-20 px-6 font-medium text-gray-900 dark:text-white font-sans">
+          <span className='ml-5 mr-5 underline text-gray-900 font-sans'>Payment Date:</span>
+          {currentInvoice.payment_date && currentInvoice.payment_date.toLocaleDateString()}
+        </div>
+        <div className="mt-2 px-6 font-medium text-gray-900 dark:text-white font-sans">
+          <span className='ml-5 mr-5 underline text-gray-900 font-sans'>Payment Due Date:</span>
+          {currentInvoice.payment_due_date && currentInvoice.payment_due_date.toLocaleDateString()}
+        </div>
       </div>
       <div>
-        <table className='w-500 border mt-10 text-center'>
-          <tbody>
+        <table className="w-full mb-20 text-sm text-left uppercase text-gray-500 dark:text-gray-400">
+          <tbody className="text-xs text-gray-700 bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="py-3 px-6 font-sans">{t("details.table.service")}</th>
               <th scope="col" className="py-3 px-6 font-sans">{t("details.table.quantity")}</th>

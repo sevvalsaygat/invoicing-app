@@ -80,7 +80,6 @@ function Index() {
       <p className="mt-3 mb-20 text-center text-gray-600 dark:text-gray-400 font-sans">
         <b className="font-style: italic text-gray-900 font-sans mr-1">INVOICE,</b>
         {t("list.description")}</p>
-
       <div className='grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2'>
         <input
           className='mb-10 block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring font-sans'

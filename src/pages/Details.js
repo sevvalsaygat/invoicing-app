@@ -62,14 +62,21 @@ function Details() {
         </div>
       </div>
       <div className='float-right mb-10'>
-        <div className="mt-20 px-6 font-medium text-gray-900 dark:text-white font-sans">
-          <span className='ml-5 mr-5 underline text-gray-900 font-sans'>{t("details.fields.payment_date")}:</span>
-          {currentInvoice.payment_date && currentInvoice.payment_date.toLocaleDateString()}
-        </div>
-        <div className="mt-2 px-6 font-medium text-gray-900 dark:text-white font-sans">
-          <span className='ml-5 mr-5 underline text-gray-900 font-sans'>{t("details.fields.payment_due_date")}:</span>
-          {currentInvoice.payment_due_date && currentInvoice.payment_due_date.toLocaleDateString()}
-        </div>
+        {
+          currentInvoice.payment_date && (
+            <div className="mt-20 px-6 font-medium text-gray-900 dark:text-white font-sans">
+              <span className='ml-5 mr-5 underline text-gray-900 font-sans'>{t("details.fields.payment_date")}:</span>
+              {currentInvoice.payment_date.toLocaleDateString()}
+            </div>
+          )
+        }
+        {
+          currentInvoice.payment_due_date &&
+          <div className="mt-2 px-6 font-medium text-gray-900 dark:text-white font-sans">
+            <span className='ml-5 mr-5 underline text-gray-900 font-sans'>{t("details.fields.payment_due_date")}:</span>
+            {currentInvoice.payment_due_date.toLocaleDateString()}
+          </div>
+        }
       </div>
       <div>
         <table className="w-full mb-20 text-sm text-left uppercase text-gray-500 dark:text-gray-400">

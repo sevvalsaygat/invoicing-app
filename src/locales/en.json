@@ -103,6 +103,11 @@
     },
     "quantity": {
       "title": "Explanation about the invoice!"
+    },
+    "payment_types": {
+      "check": "Check",
+      "credit_card": "Credit Card",
+      "cash": "Cash"
     }
   }
 }

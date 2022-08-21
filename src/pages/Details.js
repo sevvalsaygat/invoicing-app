@@ -36,26 +36,35 @@ function Details() {
       <div className="flex justify-around mt-5">
         <div className='mt-10 h-40 w-100 py-4 bg-white shadow-md rounded-lg dark:bg-gray-800'>
           <div className=" px-6 font-medium text-gray-900 dark:text-white font-sans">
-            <span className='ml-5 mr-5 border border-gray-100 rounded-md px-2 py-1 text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 font-sans'>{t("details.fields.title")}:</span>
+            <span className='ml-5 mr-5 border border-gray-100 rounded-md px-2 py-1 text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 font-sans'>
+              {t("details.fields.title")}:
+            </span>
             {currentInvoice.title}
           </div>
           <div className="mt-2 px-6 font-medium text-gray-900 dark:text-white font-sans">
-            <span className='ml-5 mr-5 border border-gray-100 rounded-md px-2 py-1 text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 font-sans'>{t("details.fields.recipent_name")}:</span>
+            <span className='ml-5 mr-5 border border-gray-100 rounded-md px-2 py-1 text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 font-sans'>
+              {t("details.fields.recipent_name")}:
+            </span>
             {currentInvoice.recipent}
           </div>
           <div className="mt-2 px-6 font-medium text-gray-900 dark:text-white font-sans">
-            <span className='ml-5 mr-5 border border-gray-100 rounded-md px-2 py-1 text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 font-sans'>{t("details.fields.receiver_email")}:</span>
+            <span className='ml-5 mr-5 border border-gray-100 rounded-md px-2 py-1 text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 font-sans'>
+              {t("details.fields.receiver_email")}:
+            </span>
             {currentInvoice.receiver_email}
           </div>
           <div className="mt-2 px-6 font-medium text-gray-900 dark:text-white font-sans">
-            <span className='ml-5 mr-5 border border-gray-100 rounded-md px-2 py-1 text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 font-sans'>{t("details.fields.payment_type")}:</span>
-            {currentInvoice.payment_type}
+            <span className='ml-5 mr-5 border border-gray-100 rounded-md px-2 py-1 text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 font-sans'>
+              {t("details.fields.payment_type")}:
+            </span>
+            {t(`details.payment_types.${currentInvoice.payment_type}`)}
           </div>
         </div>
         <div className="mt-10 mb-20 h-40 w-100 max-w-xl max-h-60 overflow-auto px-8 py-4 bg-white rounded-lg shadow-md dark:bg-gray-800">
           <div className="flex items-center justify-between">
             <div className="mt-2">
-              <a href="#" className="text-2xl font-bold text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 hover:underline">{t("details.quantity.title")}</a>
+              <a href="#" className="text-2xl font-bold text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 hover:underline">
+                {t("details.quantity.title")}</a>
               <p className="mt-2 text-gray-600 dark:text-gray-300">{currentInvoice.description}</p>
             </div>
           </div>

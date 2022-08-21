@@ -103,6 +103,11 @@
     },
     "quantity": {
       "title": "Fatura hakkında açıklama!"
+    },
+    "payment_types": {
+      "check": "Çek",
+      "credit_card": "Kredi Kartı",
+      "cash": "Peşin"
     }
   }
 }

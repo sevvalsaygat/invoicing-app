@@ -96,6 +96,7 @@ function Index() {
             <label className="text-gray-700 dark:text-gray-200">{t("form.fields.payment_date")}</label>
             <Controller
               name={"payment_date"}
+              type="date"
               control={control}
               render={({ field: { onChange, value } }) => {
                 return (
@@ -116,6 +117,7 @@ function Index() {
             <label className="text-gray-700 dark:text-gray-200">{t("form.fields.payment_due_date")}</label>
             <Controller
               name={"payment_due_date"}
+              type="date"
               control={control}
               render={({ field: { onChange, value } }) => {
                 return (

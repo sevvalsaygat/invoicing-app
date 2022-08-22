@@ -98,6 +98,9 @@ function Index() {
               name={"payment_date"}
               type="date"
               control={control}
+              rules={{
+                required: watchPaymentDueDate === undefined ? t("form.errors.required") : false
+              }}
               render={({ field: { onChange, value } }) => {
                 return (
                   <DatePicker
@@ -111,6 +114,7 @@ function Index() {
                 );
               }}
             />
+            {errors.payment_date && <span className='text-red-500'>{errors.payment_date?.message}</span>}
             {watchPaymentDueDate && <span className='ml-2 text-blue-500'>{t("form.information.payment_date")}</span>}
           </div>
           <div>
@@ -119,6 +123,9 @@ function Index() {
               name={"payment_due_date"}
               type="date"
               control={control}
+              rules={{
+                required: watchPaymentDate === undefined ? t("form.errors.required") : false
+              }}
               render={({ field: { onChange, value } }) => {
                 return (
                   <DatePicker
@@ -132,6 +139,7 @@ function Index() {
                 );
               }}
             />
+            {errors.payment_due_date && <span className='text-red-500'>{errors.payment_due_date?.message}</span>}
             {watchPaymentDate && <span className='ml-2 text-blue-500'>{t("form.information.payment_due_date")}</span>}
           </div>
           <div>
